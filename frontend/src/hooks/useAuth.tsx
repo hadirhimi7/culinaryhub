@@ -36,24 +36,39 @@ const API_BASE =
 const api = axios.create({
   baseURL: API_BASE,
   withCredentials: true,
-  timeout: 15000, // 15 second timeout
+  timeout: 30000, // 30 second timeout for regular requests
 })
 
 let csrfToken: string | null = null
 
-async function ensureCsrfToken() {
+// Helper to sleep for retry logic
+const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+
+async function ensureCsrfToken(retries = 3): Promise<string> {
   if (csrfToken) return csrfToken
-  try {
-    const res = await api.get('/api/csrf-token')
-    csrfToken = res.data.csrfToken
-    api.defaults.headers.common['X-CSRF-Token'] = csrfToken
-    console.log('CSRF token obtained successfully')
-    return csrfToken
-  } catch (err) {
-    console.error('CSRF token fetch failed:', err)
-    // Don't return null - throw so caller knows there's an issue
-    throw new Error('Failed to get security token. Please refresh the page.')
+  
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      console.log(`Getting CSRF token (attempt ${attempt}/${retries})...`)
+      // Use longer timeout for initial connection (cold start on Render free tier)
+      const res = await axios.get(`${API_BASE}/api/csrf-token`, {
+        withCredentials: true,
+        timeout: 60000, // 60 seconds for cold start
+      })
+      csrfToken = res.data.csrfToken as string
+      api.defaults.headers.common['X-CSRF-Token'] = csrfToken
+      console.log('CSRF token obtained successfully')
+      return csrfToken!
+    } catch (err) {
+      console.error(`CSRF token fetch attempt ${attempt} failed:`, err)
+      if (attempt < retries) {
+        console.log(`Retrying in ${attempt * 2} seconds...`)
+        await sleep(attempt * 2000) // Exponential backoff: 2s, 4s, 6s
+      }
+    }
   }
+  
+  throw new Error('Server is starting up. Please wait a moment and try again.')
 }
 
 // Reset CSRF token (needed after logout)

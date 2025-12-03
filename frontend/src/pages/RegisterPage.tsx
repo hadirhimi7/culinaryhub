@@ -6,12 +6,13 @@ import { getPasswordStrength } from '../utils/passwordStrength'
 
 export function RegisterPage() {
   usePageTitle('Create Account')
-  const { register, verifyOtp, resendOtp, cancelOtp, loading, otpPending } = useAuth()
+  const { register, verifyOtp, resendOtp, cancelOtp, otpPending } = useAuth()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [otp, setOtp] = useState('')
   const [error, setError] = useState<string | null>(null)
+  const [submitting, setSubmitting] = useState(false)
   const [resendCooldown, setResendCooldown] = useState(0)
 
   const strength = getPasswordStrength(password)
@@ -31,11 +32,14 @@ export function RegisterPage() {
       return
     }
 
+    setSubmitting(true)
     try {
       await register(name, email, password)
     } catch (err) {
       console.error('Registration error:', err)
       setError('Registration failed. Try a different email.')
+    } finally {
+      setSubmitting(false)
     }
   }
 
@@ -47,11 +51,14 @@ export function RegisterPage() {
       return
     }
 
+    setSubmitting(true)
     try {
       await verifyOtp(otp)
     } catch (err) {
       console.error('OTP error:', err)
       setError('Invalid or expired OTP. Please try again.')
+    } finally {
+      setSubmitting(false)
     }
   }
 
@@ -205,10 +212,10 @@ export function RegisterPage() {
             <button
               className="btn btn-primary"
               type="submit"
-              disabled={loading || otp.length !== 6}
+              disabled={submitting || otp.length !== 6}
               style={{ width: '100%', marginTop: '1.25rem' }}
             >
-              {loading ? 'Verifying…' : 'Complete Registration'}
+              {submitting ? 'Verifying…' : 'Complete Registration'}
             </button>
 
             <div
@@ -366,10 +373,10 @@ export function RegisterPage() {
           <button
             className="btn btn-primary"
             type="submit"
-            disabled={loading}
+            disabled={submitting}
             style={{ width: '100%', marginTop: '1.25rem' }}
           >
-            {loading ? 'Creating account…' : 'Create Account'}
+            {submitting ? 'Creating account…' : 'Create Account'}
           </button>
 
           <div

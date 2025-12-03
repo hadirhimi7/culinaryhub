@@ -503,11 +503,21 @@
 .mobile-menu-btn {
   display: none;
   background: transparent;
-  border: 1px solid var(--color-border);
+  border: none;
   border-radius: var(--border-radius-md);
-  padding: 0.5rem;
+  padding: 0.6rem;
   cursor: pointer;
   color: var(--color-text);
+  transition: background 150ms ease-out;
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(107, 140, 90, 0.1);
+}
+
+.mobile-menu-btn svg {
+  width: 26px;
+  height: 26px;
 }
 
 @media (max-width: 768px) {
@@ -517,10 +527,10 @@
     justify-content: center;
   }
   .desktop-nav {
-    display: none;
+    display: none !important;
   }
   .desktop-actions {
-    display: none;
+    display: none !important;
   }
 }
 

@@ -45,6 +45,7 @@ export function createServer() {
 
   // Session configuration
   const sessionSecret = process.env.SESSION_SECRET || 'change_me_session_secret';
+  const isProduction = process.env.NODE_ENV === 'production';
   app.use(
     session({
       name: 'sid',
@@ -53,8 +54,10 @@ export function createServer() {
       saveUninitialized: false,
       cookie: {
         httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
+        secure: isProduction,
+        // In production with different subdomains, use 'none' to allow cross-origin cookies
+        // This requires secure: true (HTTPS)
+        sameSite: isProduction ? 'none' : 'lax',
         maxAge: ONE_HOUR_MS,
       },
     }),

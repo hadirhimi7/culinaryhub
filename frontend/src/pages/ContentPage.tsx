@@ -765,7 +765,7 @@ function RecipeCard({
     <article className="food-card">
       {post.imageUrl ? (
         <img
-          src={`http://localhost:4000${post.imageUrl}`}
+          src={getImageUrl(post.imageUrl) || ''}
           alt={post.title}
           className="food-card-image"
         />

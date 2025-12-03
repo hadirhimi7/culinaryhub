@@ -5,11 +5,12 @@ import { usePageTitle } from '../hooks/usePageTitle'
 
 export function LoginPage() {
   usePageTitle('Sign In')
-  const { login, verifyOtp, resendOtp, cancelOtp, loading, otpPending } = useAuth()
+  const { login, verifyOtp, resendOtp, cancelOtp, otpPending } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [otp, setOtp] = useState('')
   const [error, setError] = useState<string | null>(null)
+  const [submitting, setSubmitting] = useState(false)
   const [resendCooldown, setResendCooldown] = useState(0)
   const location = useLocation()
 
@@ -22,11 +23,14 @@ export function LoginPage() {
       return
     }
 
+    setSubmitting(true)
     try {
       await login(email, password)
     } catch (err) {
       console.error('Login error:', err)
       setError('Login failed. Check your credentials.')
+    } finally {
+      setSubmitting(false)
     }
   }
 
@@ -38,11 +42,14 @@ export function LoginPage() {
       return
     }
 
+    setSubmitting(true)
     try {
       await verifyOtp(otp)
     } catch (err) {
       console.error('OTP error:', err)
       setError('Invalid or expired OTP. Please try again.')
+    } finally {
+      setSubmitting(false)
     }
   }
 
@@ -180,10 +187,10 @@ export function LoginPage() {
             <button
               className="btn btn-primary"
               type="submit"
-              disabled={loading || otp.length !== 6}
+              disabled={submitting || otp.length !== 6}
               style={{ width: '100%', marginTop: '1.25rem' }}
             >
-              {loading ? 'Verifying…' : 'Verify OTP'}
+              {submitting ? 'Verifying…' : 'Verify OTP'}
             </button>
 
             <div
@@ -323,10 +330,10 @@ export function LoginPage() {
           <button
             className="btn btn-primary"
             type="submit"
-            disabled={loading}
+            disabled={submitting}
             style={{ width: '100%', marginTop: '1.25rem' }}
           >
-            {loading ? 'Signing in…' : 'Sign In'}
+            {submitting ? 'Signing in…' : 'Sign In'}
           </button>
 
           <div

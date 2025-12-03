@@ -169,18 +169,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           userId: res.data.userId,
           demoOtp: res.data.demoOtp, // DEMO ONLY
         })
-        setLoading(false)
         return
       }
       
       const me = await api.get('/api/auth/me')
       setUser(me.data.user)
-      setLoading(false) // Important: set loading to false before navigate
       lastActivityRef.current = Date.now()
       navigate('/dashboard')
     } catch (err) {
-      setLoading(false)
+      console.error('Login failed:', err)
       throw err
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -197,18 +197,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           userId: res.data.userId,
           demoOtp: res.data.demoOtp, // DEMO ONLY
         })
-        setLoading(false)
         return
       }
       
       const me = await api.get('/api/auth/me')
       setUser(me.data.user)
-      setLoading(false) // Important: set loading to false before navigate
       lastActivityRef.current = Date.now()
       navigate('/dashboard')
     } catch (err) {
-      setLoading(false)
+      console.error('Register failed:', err)
       throw err
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -226,12 +226,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const me = await api.get('/api/auth/me')
       setUser(me.data.user)
       setOtpPending(null)
-      setLoading(false) // Important: set loading to false before navigate
       lastActivityRef.current = Date.now()
       navigate('/dashboard')
     } catch (err) {
-      setLoading(false)
+      console.error('OTP verification failed:', err)
       throw err
+    } finally {
+      setLoading(false)
     }
   }
 

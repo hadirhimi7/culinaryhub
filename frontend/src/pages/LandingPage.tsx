@@ -141,7 +141,7 @@ export function LandingPage() {
           Share recipes, discover new flavors, and connect with food lovers worldwide.
         </p>
 
-        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+        <div className="hero-actions" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           {!user ? (
             <>
               <Link to="/register" className="btn btn-primary">

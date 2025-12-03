@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 
 export function MainLayout({ children }: { children: React.ReactNode }) {
   const { user, logout } = useAuth()
   const location = useLocation()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false)
+  }, [location.pathname])
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileMenuOpen])
 
   const getRoleBadge = () => {
     if (!user) return null
@@ -22,6 +40,20 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
     )
   }
 
+  const navItems = [
+    { to: '/', label: 'Home', icon: '🏠', public: true },
+    { to: '/dashboard', label: 'Dashboard', icon: '📊', requireAuth: true },
+    { to: '/content', label: 'Content', icon: '📝', requireAuth: true },
+    { to: '/admin', label: 'Admin', icon: '⚙️', requireRole: 'admin' },
+  ]
+
+  const filteredNavItems = navItems.filter((item) => {
+    if (item.public) return true
+    if (item.requireAuth && !user) return false
+    if (item.requireRole && user?.role !== item.requireRole) return false
+    return !!user
+  })
+
   return (
     <div className="app-shell">
       <header
@@ -38,13 +70,14 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
           style={{
             maxWidth: '1140px',
             margin: '0 auto',
-            padding: '0.85rem 1.5rem',
+            padding: '0.85rem 1rem',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: '1.5rem',
+            gap: '1rem',
           }}
         >
+          {/* Logo */}
           <Link
             to="/"
             style={{
@@ -63,22 +96,25 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
                 alignItems: 'center',
                 justifyContent: 'center',
                 fontSize: '1.2rem',
+                flexShrink: 0,
               }}
             >
               🍳
             </div>
-            <div>
+            <div className="logo-text" style={{ minWidth: 0 }}>
               <div
                 style={{
                   fontSize: '1.1rem',
                   fontWeight: 600,
                   fontFamily: "'Crimson Pro', Georgia, serif",
                   color: 'var(--color-text)',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 Culinary Hub
               </div>
               <div
+                className="logo-subtitle"
                 style={{
                   fontSize: '0.72rem',
                   letterSpacing: '0.08em',
@@ -91,7 +127,9 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
             </div>
           </Link>
 
+          {/* Desktop Navigation */}
           <nav
+            className="desktop-nav"
             style={{
               display: 'flex',
               alignItems: 'center',
@@ -99,24 +137,11 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
               fontSize: '0.88rem',
             }}
           >
-            <NavLinkItem to="/" currentPath={location.pathname}>
-              Home
-            </NavLinkItem>
-            {user && (
-              <NavLinkItem to="/dashboard" currentPath={location.pathname}>
-                Dashboard
+            {filteredNavItems.map((item) => (
+              <NavLinkItem key={item.to} to={item.to} currentPath={location.pathname}>
+                {item.label}
               </NavLinkItem>
-            )}
-            {user && (
-              <NavLinkItem to="/content" currentPath={location.pathname}>
-                Content
-              </NavLinkItem>
-            )}
-            {user?.role === 'admin' && (
-              <NavLinkItem to="/admin" currentPath={location.pathname}>
-                Admin
-              </NavLinkItem>
-            )}
+            ))}
             {!user && (
               <>
                 <NavLinkItem to="/login" currentPath={location.pathname}>
@@ -129,7 +154,8 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
             )}
           </nav>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          {/* Desktop Actions */}
+          <div className="desktop-actions" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             {user && getRoleBadge()}
             {user && (
               <button
@@ -142,8 +168,116 @@ export function MainLayout({ children }: { children: React.ReactNode }) {
               </button>
             )}
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="mobile-menu-btn"
+            onClick={() => setMobileMenuOpen(true)}
+            aria-label="Open menu"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          </button>
         </div>
       </header>
+
+      {/* Mobile Menu Overlay */}
+      <div
+        className={`mobile-menu-overlay ${mobileMenuOpen ? 'open' : ''}`}
+        onClick={() => setMobileMenuOpen(false)}
+      />
+
+      {/* Mobile Menu */}
+      <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
+        <div className="mobile-menu-header">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span style={{ fontSize: '1.2rem' }}>🍳</span>
+            <span style={{ fontWeight: 600, fontFamily: "'Crimson Pro', Georgia, serif" }}>
+              Culinary Hub
+            </span>
+          </div>
+          <button
+            className="mobile-menu-close"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            ×
+          </button>
+        </div>
+
+        <nav className="mobile-menu-nav">
+          {filteredNavItems.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              className={`mobile-nav-link ${location.pathname === item.to ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <span>{item.icon}</span>
+              <span>{item.label}</span>
+            </Link>
+          ))}
+          {!user && (
+            <>
+              <Link
+                to="/login"
+                className={`mobile-nav-link ${location.pathname === '/login' ? 'active' : ''}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span>🔑</span>
+                <span>Login</span>
+              </Link>
+              <Link
+                to="/register"
+                className={`mobile-nav-link ${location.pathname === '/register' ? 'active' : ''}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span>✨</span>
+                <span>Register</span>
+              </Link>
+            </>
+          )}
+        </nav>
+
+        {user && (
+          <div className="mobile-menu-footer">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+              <div
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: '10px',
+                  background: 'linear-gradient(135deg, var(--color-accent-soft), var(--color-gold-soft))',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '1.1rem',
+                }}
+              >
+                👤
+              </div>
+              <div>
+                <div style={{ fontWeight: 500 }}>{user.name}</div>
+                <div style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)' }}>{user.email}</div>
+              </div>
+            </div>
+            <div style={{ marginBottom: '0.75rem' }}>{getRoleBadge()}</div>
+            <button
+              className="btn btn-outline"
+              onClick={() => {
+                logout()
+                setMobileMenuOpen(false)
+              }}
+              style={{ width: '100%' }}
+            >
+              Logout
+            </button>
+          </div>
+        )}
+      </div>
 
       <main className="app-main">
         <div className="app-inner">{children}</div>

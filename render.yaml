@@ -1,5 +1,6 @@
 # Render.com Blueprint for CulinaryHub
 # Deploy both frontend and backend with one click
+# Note: Free tier doesn't have persistent disk, so database resets on redeploy
 
 services:
   # Backend API
@@ -8,7 +9,7 @@ services:
     runtime: node
     region: oregon
     plan: free
-    buildCommand: cd backend && npm install && npm run build
+    buildCommand: cd backend && npm install && npm run build && npm run seed
     startCommand: cd backend && node dist/server.js
     healthCheckPath: /health
     envVars:
@@ -20,10 +21,8 @@ services:
         generateValue: true
       - key: FRONTEND_URL
         value: https://culinaryhub.onrender.com
-    disk:
-      name: data
-      mountPath: /opt/render/project/src/backend/data
-      sizeGB: 1
+      - key: DATABASE_PATH
+        value: ./data/database.sqlite
 
   # Frontend
   - type: web
@@ -42,4 +41,3 @@ services:
     envVars:
       - key: VITE_API_BASE_URL
         value: https://culinaryhub-api.onrender.com
-

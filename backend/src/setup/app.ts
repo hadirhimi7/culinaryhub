@@ -27,14 +27,21 @@ export function createServer() {
   // Initialize database schema
   initDb();
 
-  // Basic security hardening
-  app.use(helmet());
+  // Basic security hardening - configure for cross-origin
+  app.use(helmet({
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
+    crossOriginOpenerPolicy: { policy: 'same-origin-allow-popups' },
+  }));
 
   const frontendOrigin = process.env.FRONTEND_URL || 'http://localhost:5173';
+  console.log('CORS origin:', frontendOrigin);
   app.use(
     cors({
       origin: frontendOrigin,
       credentials: true,
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'X-CSRF-Token', 'Authorization'],
+      exposedHeaders: ['set-cookie'],
     }),
   );
 
@@ -77,13 +84,29 @@ export function createServer() {
     cookie: false,
   });
 
+  // Simple ping endpoint to test CORS
+  app.get('/api/ping', (req, res) => {
+    res.json({ ok: true, timestamp: new Date().toISOString() });
+  });
+
   // Attach CSRF token route for frontend
   app.get('/api/csrf-token', (req, res) => {
+    // Ensure session exists
+    if (!req.session) {
+      console.error('No session object!');
+      return res.status(500).json({ error: 'Session not initialized' });
+    }
+    
     // Initialize CSRF for this request
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const csrfReq: any = req;
     if (!csrfReq.csrfToken) {
-      csrfProtection(req, res, () => {
+      csrfProtection(req, res, (err) => {
+        if (err) {
+          console.error('CSRF protection error:', err);
+          return res.status(500).json({ error: 'CSRF initialization failed' });
+        }
+        console.log('CSRF token generated for session');
         res.json({ csrfToken: csrfReq.csrfToken() });
       });
       return;

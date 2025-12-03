@@ -36,6 +36,7 @@ const API_BASE =
 const api = axios.create({
   baseURL: API_BASE,
   withCredentials: true,
+  timeout: 15000, // 15 second timeout
 })
 
 let csrfToken: string | null = null
@@ -46,10 +47,12 @@ async function ensureCsrfToken() {
     const res = await api.get('/api/csrf-token')
     csrfToken = res.data.csrfToken
     api.defaults.headers.common['X-CSRF-Token'] = csrfToken
+    console.log('CSRF token obtained successfully')
     return csrfToken
   } catch (err) {
-    console.debug('CSRF token fetch failed:', err)
-    return null
+    console.error('CSRF token fetch failed:', err)
+    // Don't return null - throw so caller knows there's an issue
+    throw new Error('Failed to get security token. Please refresh the page.')
   }
 }
 
@@ -147,8 +150,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           lastActivityRef.current = Date.now()
         }
       } catch (err) {
-        console.debug('Auth bootstrap failed:', err)
+        console.error('Auth bootstrap failed:', err)
         setUser(null)
+        // Reset CSRF token on bootstrap failure so next action can retry
+        resetCsrfToken()
       } finally {
         setLoading(false)
       }
@@ -160,8 +165,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setLoading(true)
     try {
       resetCsrfToken() // Get fresh CSRF token
+      console.log('Getting CSRF token...')
       await ensureCsrfToken()
+      console.log('Sending login request...')
       const res = await api.post('/api/auth/login', { email, password })
+      console.log('Login response:', res.data)
       
       // Check if OTP is required
       if (res.data.requiresOtp) {
@@ -172,6 +180,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return
       }
       
+      console.log('Fetching user data...')
       const me = await api.get('/api/auth/me')
       setUser(me.data.user)
       lastActivityRef.current = Date.now()

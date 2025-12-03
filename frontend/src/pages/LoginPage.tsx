@@ -26,9 +26,18 @@ export function LoginPage() {
     setSubmitting(true)
     try {
       await login(email, password)
-    } catch (err) {
+    } catch (err: unknown) {
       console.error('Login error:', err)
-      setError('Login failed. Check your credentials.')
+      const axiosError = err as { response?: { data?: { error?: string }, status?: number }, message?: string }
+      if (axiosError.response?.data?.error) {
+        setError(axiosError.response.data.error)
+      } else if (axiosError.response?.status === 403) {
+        setError('Session expired. Please refresh the page and try again.')
+      } else if (axiosError.message?.includes('Network Error')) {
+        setError('Cannot connect to server. Please check your connection.')
+      } else {
+        setError('Login failed. Check your credentials.')
+      }
     } finally {
       setSubmitting(false)
     }

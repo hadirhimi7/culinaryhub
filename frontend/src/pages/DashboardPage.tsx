@@ -1,7 +1,9 @@
 import { useAuth } from '../hooks/useAuth'
+import { usePageTitle } from '../hooks/usePageTitle'
 import { Link } from 'react-router-dom'
 
 export function DashboardPage() {
+  usePageTitle('Dashboard')
   const { user } = useAuth()
 
   const getRoleBadgeClass = () => {

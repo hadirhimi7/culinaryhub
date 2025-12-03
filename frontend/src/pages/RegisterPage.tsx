@@ -1,9 +1,11 @@
 import { type FormEvent, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+import { usePageTitle } from '../hooks/usePageTitle'
 import { getPasswordStrength } from '../utils/passwordStrength'
 
 export function RegisterPage() {
+  usePageTitle('Create Account')
   const { register, verifyOtp, resendOtp, cancelOtp, loading, otpPending } = useAuth()
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')

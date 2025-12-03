@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+import { usePageTitle } from '../hooks/usePageTitle'
 import axios from 'axios'
 import { API_URL, getImageUrl } from '../config'
 
@@ -33,6 +34,7 @@ interface LogEntry {
 }
 
 export function AdminPage() {
+  usePageTitle('Admin Panel')
   const { user } = useAuth()
   const [activeSection, setActiveSection] = useState<'overview' | 'pending' | 'users' | 'logs'>('overview')
   const [pendingPosts, setPendingPosts] = useState<Post[]>([])

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+import { usePageTitle } from '../hooks/usePageTitle'
 import axios from 'axios'
 import { API_URL, getImageUrl } from '../config'
 
@@ -44,6 +45,7 @@ const CUISINES = [
 ]
 
 export function LandingPage() {
+  usePageTitle('Home')
   const { user } = useAuth()
   const [meals, setMeals] = useState<Meal[]>([])
   const [posts, setPosts] = useState<Post[]>([])

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
+import { usePageTitle } from '../hooks/usePageTitle'
 
 export function Error403Page() {
+  usePageTitle('Access Denied')
   return (
     <div
       style={{

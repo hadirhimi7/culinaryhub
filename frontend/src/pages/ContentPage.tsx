@@ -1,5 +1,6 @@
 import { useState, useEffect, type FormEvent, type ChangeEvent } from 'react'
 import { useAuth } from '../hooks/useAuth'
+import { usePageTitle } from '../hooks/usePageTitle'
 import axios from 'axios'
 import { API_URL, getImageUrl } from '../config'
 
@@ -43,6 +44,7 @@ const NATIONALITIES = [
 ]
 
 export function ContentPage() {
+  usePageTitle('Content Manager')
   const { user } = useAuth()
   const [activeTab, setActiveTab] = useState<'recipes' | 'files' | 'pending'>('recipes')
   const [posts, setPosts] = useState<Post[]>([])

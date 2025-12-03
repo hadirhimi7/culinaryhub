@@ -13,77 +13,89 @@ if (!fs.existsSync(dbDir)) {
 
 export const db = new sqlite3.Database(dbFile);
 
-export function initDb() {
-  db.serialize(() => {
-    // Users table
-    db.run(
-      `CREATE TABLE IF NOT EXISTS users (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        email TEXT NOT NULL UNIQUE,
-        password_hash TEXT NOT NULL,
-        role TEXT NOT NULL DEFAULT 'user',
-        created_at TEXT NOT NULL
-      )`,
-    );
+export function initDb(): Promise<void> {
+  return new Promise((resolve, reject) => {
+    console.log('📦 Initializing database tables...');
+    db.serialize(() => {
+      // Users table
+      db.run(
+        `CREATE TABLE IF NOT EXISTS users (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          name TEXT NOT NULL,
+          email TEXT NOT NULL UNIQUE,
+          password_hash TEXT NOT NULL,
+          role TEXT NOT NULL DEFAULT 'user',
+          created_at TEXT NOT NULL
+        )`,
+      );
 
-    // File uploads table
-    db.run(
-      `CREATE TABLE IF NOT EXISTS file_uploads (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER NOT NULL,
-        original_name TEXT NOT NULL,
-        stored_name TEXT NOT NULL,
-        mime_type TEXT NOT NULL,
-        size INTEGER NOT NULL,
-        created_at TEXT NOT NULL,
-        FOREIGN KEY (user_id) REFERENCES users(id)
-      )`,
-    );
+      // File uploads table
+      db.run(
+        `CREATE TABLE IF NOT EXISTS file_uploads (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          user_id INTEGER NOT NULL,
+          original_name TEXT NOT NULL,
+          stored_name TEXT NOT NULL,
+          mime_type TEXT NOT NULL,
+          size INTEGER NOT NULL,
+          created_at TEXT NOT NULL,
+          FOREIGN KEY (user_id) REFERENCES users(id)
+        )`,
+      );
 
-    // Recipe posts table
-    db.run(
-      `CREATE TABLE IF NOT EXISTS posts (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        title TEXT NOT NULL,
-        content TEXT NOT NULL,
-        image_url TEXT,
-        nationality TEXT,
-        author_id INTEGER NOT NULL,
-        author_name TEXT NOT NULL,
-        status TEXT NOT NULL DEFAULT 'pending',
-        approved_by INTEGER,
-        created_at TEXT NOT NULL,
-        updated_at TEXT NOT NULL,
-        FOREIGN KEY (author_id) REFERENCES users(id),
-        FOREIGN KEY (approved_by) REFERENCES users(id)
-      )`,
-    );
+      // Recipe posts table
+      db.run(
+        `CREATE TABLE IF NOT EXISTS posts (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          title TEXT NOT NULL,
+          content TEXT NOT NULL,
+          image_url TEXT,
+          nationality TEXT,
+          author_id INTEGER NOT NULL,
+          author_name TEXT NOT NULL,
+          status TEXT NOT NULL DEFAULT 'pending',
+          approved_by INTEGER,
+          created_at TEXT NOT NULL,
+          updated_at TEXT NOT NULL,
+          FOREIGN KEY (author_id) REFERENCES users(id),
+          FOREIGN KEY (approved_by) REFERENCES users(id)
+        )`,
+      );
 
-    // OTP table for user login verification
-    db.run(
-      `CREATE TABLE IF NOT EXISTS otp_codes (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER NOT NULL,
-        code TEXT NOT NULL,
-        expires_at TEXT NOT NULL,
-        used INTEGER DEFAULT 0,
-        created_at TEXT NOT NULL,
-        FOREIGN KEY (user_id) REFERENCES users(id)
-      )`,
-    );
+      // OTP table for user login verification
+      db.run(
+        `CREATE TABLE IF NOT EXISTS otp_codes (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          user_id INTEGER NOT NULL,
+          code TEXT NOT NULL,
+          expires_at TEXT NOT NULL,
+          used INTEGER DEFAULT 0,
+          created_at TEXT NOT NULL,
+          FOREIGN KEY (user_id) REFERENCES users(id)
+        )`,
+      );
 
-    // Sessions table for activity tracking
-    db.run(
-      `CREATE TABLE IF NOT EXISTS user_sessions (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER NOT NULL,
-        session_id TEXT NOT NULL,
-        last_activity TEXT NOT NULL,
-        created_at TEXT NOT NULL,
-        FOREIGN KEY (user_id) REFERENCES users(id)
-      )`,
-    );
+      // Sessions table for activity tracking - final table, resolve when done
+      db.run(
+        `CREATE TABLE IF NOT EXISTS user_sessions (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          user_id INTEGER NOT NULL,
+          session_id TEXT NOT NULL,
+          last_activity TEXT NOT NULL,
+          created_at TEXT NOT NULL,
+          FOREIGN KEY (user_id) REFERENCES users(id)
+        )`,
+        (err) => {
+          if (err) {
+            console.error('❌ Database initialization error:', err);
+            reject(err);
+          } else {
+            console.log('✅ Database tables initialized');
+            resolve();
+          }
+        }
+      );
+    });
   });
 }
 

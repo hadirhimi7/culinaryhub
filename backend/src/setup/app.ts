@@ -12,7 +12,6 @@ import { fileRouter } from '../routes/files';
 import { postsRouter } from '../routes/posts';
 import { errorHandler } from '../middleware/errorHandler';
 import { securityLogger, requestLogger } from '../middleware/logging';
-import { initDb } from '../db';
 
 const ONE_HOUR_MS = 1000 * 60 * 60;
 
@@ -24,8 +23,7 @@ export function createServer() {
     app.set('trust proxy', 1);
   }
 
-  // Initialize database schema
-  initDb();
+  // Note: Database is initialized in server.ts before createServer is called
 
   // Basic security hardening - configure for cross-origin
   app.use(helmet({
@@ -101,7 +99,7 @@ export function createServer() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const csrfReq: any = req;
     if (!csrfReq.csrfToken) {
-      csrfProtection(req, res, (err) => {
+      csrfProtection(req, res, (err: Error | null) => {
         if (err) {
           console.error('CSRF protection error:', err);
           return res.status(500).json({ error: 'CSRF initialization failed' });

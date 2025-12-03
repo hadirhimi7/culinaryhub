@@ -1,0 +1,47 @@
+import { Navigate, useLocation } from 'react-router-dom'
+import { ReactNode } from 'react'
+import { useAuth } from '../hooks/useAuth'
+
+export function ProtectedRoute({ children }: { children: ReactNode }) {
+  const { user, loading } = useAuth()
+  const location = useLocation()
+
+  if (loading) {
+    return <div className="muted">Checking your session…</div>
+  }
+
+  if (!user) {
+    return <Navigate to="/login" replace state={{ from: location }} />
+  }
+
+  return <>{children}</>
+}
+
+interface RoleProtectedRouteProps {
+  children: ReactNode
+  allowedRoles: Array<'admin' | 'editor' | 'user'>
+}
+
+export function RoleProtectedRoute({
+  children,
+  allowedRoles,
+}: RoleProtectedRouteProps) {
+  const { user, loading } = useAuth()
+  const location = useLocation()
+
+  if (loading) {
+    return <div className="muted">Checking your access…</div>
+  }
+
+  if (!user) {
+    return <Navigate to="/login" replace state={{ from: location }} />
+  }
+
+  if (!allowedRoles.includes(user.role)) {
+    return <Navigate to="/403" replace />
+  }
+
+  return <>{children}</>
+}
+
+

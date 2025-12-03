@@ -1,0 +1,403 @@
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+.app-inner {
+  width: 100%;
+  max-width: 1140px;
+}
+
+.page-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.page-grid--two-column {
+  grid-template-columns: 1.2fr 1fr;
+}
+
+@media (max-width: 900px) {
+  .app-main {
+    padding: 2rem 1.25rem 2.5rem;
+  }
+  .page-grid--two-column {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card Surfaces - Light Theme */
+.card-surface {
+  background: var(--color-bg-card);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--color-border);
+  padding: 2rem 2.2rem;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.card-surface::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-gold));
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.card-surface--elevated:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.card-surface--elevated:hover::before {
+  opacity: 1;
+}
+
+.card-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  letter-spacing: 0.01em;
+  margin: 0;
+  font-family: 'Crimson Pro', Georgia, serif;
+}
+
+.card-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Pills/Badges */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(107, 140, 90, 0.15), rgba(201, 148, 61, 0.1));
+  border: 1px solid rgba(107, 140, 90, 0.3);
+  color: var(--color-accent-strong);
+}
+
+.pill--admin {
+  background: linear-gradient(135deg, rgba(184, 106, 75, 0.15), rgba(201, 148, 61, 0.15));
+  border-color: rgba(184, 106, 75, 0.4);
+  color: var(--color-warm);
+}
+
+.pill--editor {
+  background: linear-gradient(135deg, rgba(107, 140, 90, 0.15), rgba(107, 140, 90, 0.1));
+  border-color: rgba(107, 140, 90, 0.4);
+  color: var(--color-accent-strong);
+}
+
+.pill--pending {
+  background: rgba(201, 148, 61, 0.15);
+  border-color: rgba(201, 148, 61, 0.4);
+  color: var(--color-gold);
+}
+
+.pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+/* Buttons */
+.btn {
+  border-radius: var(--border-radius-md);
+  border: 1px solid transparent;
+  padding: 0.65rem 1.3rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  pointer-events: auto;
+  position: relative;
+  z-index: 10;
+  user-select: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--color-accent-strong), var(--color-accent));
+  color: white;
+  box-shadow: 0 4px 16px rgba(74, 107, 58, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(74, 107, 58, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-accent);
+  background: rgba(107, 140, 90, 0.08);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text-muted);
+  padding-inline: 0.4rem;
+}
+
+.btn-ghost:hover {
+  color: var(--color-text);
+}
+
+.btn-danger {
+  background: transparent;
+  border-color: rgba(184, 75, 75, 0.3);
+  color: #b84b4b;
+}
+
+.btn-danger:hover {
+  background: rgba(184, 75, 75, 0.1);
+  border-color: rgba(184, 75, 75, 0.5);
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+/* Form Inputs */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.input-label {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.input-control {
+  background: var(--color-bg);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border);
+  padding: 0.7rem 0.9rem;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.input-control:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(107, 140, 90, 0.12);
+}
+
+.input-control::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.6;
+}
+
+.input-help {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.25rem;
+  gap: 1rem;
+}
+
+/* Password Meter */
+.password-meter {
+  margin-top: 0.35rem;
+  pointer-events: none;
+  position: relative;
+  z-index: 0;
+}
+
+.password-meter-bar {
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(90, 80, 60, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.password-meter-bar-fill {
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #c45c5c, var(--color-gold), var(--color-accent));
+  transform-origin: left;
+  transition: transform 140ms ease-out;
+}
+
+.password-meter-label {
+  margin-top: 0.3rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.password-meter-label--weak {
+  color: #c45c5c;
+}
+.password-meter-label--medium {
+  color: var(--color-gold);
+}
+.password-meter-label--strong {
+  color: var(--color-accent-strong);
+}
+
+/* Status Badge */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(107, 140, 90, 0.1);
+  border: 1px solid rgba(107, 140, 90, 0.25);
+  font-size: 0.78rem;
+  color: var(--color-accent-strong);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--color-accent);
+}
+
+/* Section headers */
+.section-title {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--color-text);
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Food card styles */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.food-card {
+  background: var(--color-bg-card);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-fast);
+}
+
+.food-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+
+.food-card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.food-card-body {
+  padding: 1.25rem;
+}
+
+.food-card-title {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 1.15rem;
+  margin: 0 0 0.5rem;
+  color: var(--color-text);
+}
+
+.food-card-category {
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.5rem;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tab:hover {
+  color: var(--color-text);
+  background: rgba(107, 140, 90, 0.08);
+}
+
+.tab--active {
+  color: var(--color-accent-strong);
+  background: rgba(107, 140, 90, 0.12);
+}

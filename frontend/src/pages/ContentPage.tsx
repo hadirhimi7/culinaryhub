@@ -435,19 +435,40 @@ export function ContentPage() {
                 </div>
 
                 <div className="input-group">
-                  <label className="input-label">Recipe Photo</label>
-                  {postImagePreview ? (
+                  <label className="input-label">Recipe Photo or PDF</label>
+                  {postImage ? (
                     <div style={{ position: 'relative', display: 'inline-block' }}>
-                      <img
-                        src={postImagePreview}
-                        alt="Preview"
-                        style={{
-                          maxWidth: '300px',
-                          maxHeight: '200px',
-                          borderRadius: 'var(--border-radius-md)',
-                          border: '1px solid var(--color-border)',
-                        }}
-                      />
+                      {postImage.type === 'application/pdf' ? (
+                        <div
+                          style={{
+                            maxWidth: '300px',
+                            padding: '1.5rem',
+                            borderRadius: 'var(--border-radius-md)',
+                            border: '1px solid var(--color-border)',
+                            background: 'rgba(107, 140, 90, 0.1)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.75rem',
+                          }}
+                        >
+                          <span style={{ fontSize: '2rem' }}>📄</span>
+                          <div>
+                            <div style={{ fontWeight: 500 }}>{postImage.name}</div>
+                            <div className="muted" style={{ fontSize: '0.8rem' }}>PDF Document</div>
+                          </div>
+                        </div>
+                      ) : postImagePreview ? (
+                        <img
+                          src={postImagePreview}
+                          alt="Preview"
+                          style={{
+                            maxWidth: '300px',
+                            maxHeight: '200px',
+                            borderRadius: 'var(--border-radius-md)',
+                            border: '1px solid var(--color-border)',
+                          }}
+                        />
+                      ) : null}
                       <button
                         type="button"
                         onClick={clearPostImage}
@@ -476,11 +497,11 @@ export function ContentPage() {
                       type="file"
                       className="input-control"
                       onChange={handlePostImageSelect}
-                      accept="image/jpeg,image/png,image/gif,image/webp"
+                      accept="image/jpeg,image/png,image/gif,image/webp,application/pdf"
                     />
                   )}
                   <div className="input-help">
-                    Accepted: JPEG, PNG, GIF, WebP (max 15MB)
+                    Accepted: JPEG, PNG, GIF, WebP, PDF (max 15MB)
                   </div>
                 </div>
 
@@ -760,15 +781,38 @@ function RecipeCard({
   onDelete: (id: number) => void
 }) {
   const canDelete = post.authorId === userId || isAdmin
+  const isPdf = post.imageUrl?.toLowerCase().endsWith('.pdf')
 
   return (
     <article className="food-card">
       {post.imageUrl ? (
-        <img
-          src={getImageUrl(post.imageUrl) || ''}
-          alt={post.title}
-          className="food-card-image"
-        />
+        isPdf ? (
+          <a
+            href={getImageUrl(post.imageUrl) || ''}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="food-card-image"
+            style={{
+              background: 'linear-gradient(135deg, #e8f0e3, #faf6eb)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexDirection: 'column',
+              gap: '0.5rem',
+              textDecoration: 'none',
+              color: 'var(--color-text)',
+            }}
+          >
+            <span style={{ fontSize: '3rem' }}>📄</span>
+            <span style={{ fontSize: '0.85rem', fontWeight: 500 }}>View PDF</span>
+          </a>
+        ) : (
+          <img
+            src={getImageUrl(post.imageUrl) || ''}
+            alt={post.title}
+            className="food-card-image"
+          />
+        )
       ) : (
         <div
           className="food-card-image"
@@ -798,15 +842,28 @@ function RecipeCard({
         >
           {post.content.length > 100 ? post.content.substring(0, 100) + '...' : post.content}
         </p>
-        {canDelete && (
-          <button
-            className="btn btn-danger"
-            onClick={() => onDelete(post.id)}
-            style={{ fontSize: '0.78rem', padding: '0.3rem 0.6rem', marginTop: '0.5rem' }}
-          >
-            Delete
-          </button>
-        )}
+        <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.5rem' }}>
+          {isPdf && (
+            <a
+              href={getImageUrl(post.imageUrl!) || ''}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline"
+              style={{ fontSize: '0.78rem', padding: '0.3rem 0.6rem' }}
+            >
+              📄 Open PDF
+            </a>
+          )}
+          {canDelete && (
+            <button
+              className="btn btn-danger"
+              onClick={() => onDelete(post.id)}
+              style={{ fontSize: '0.78rem', padding: '0.3rem 0.6rem' }}
+            >
+              Delete
+            </button>
+          )}
+        </div>
       </div>
     </article>
   )

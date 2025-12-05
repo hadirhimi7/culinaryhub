@@ -570,3 +570,265 @@
 {"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-03T21:25:11.831Z"}
 {"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-03T21:25:24.260Z"}
 {"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-03T21:26:05.907Z"}
+{"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-03T22:28:56.512Z"}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":304}
+{"duration_ms":0,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":304}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":304}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":304}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":304}
+{"action":"login","email":"user@example.com","level":"info","message":"otp_generated","userId":3}
+{"duration_ms":249,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/login","status":200}
+{"description":"Regular User verified OTP and logged in","email":"user@example.com","level":"info","message":"otp_verified","name":"Regular User","userId":3}
+{"duration_ms":12,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/verify-otp","status":200}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":200}
+{"duration_ms":6,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":200}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":79,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/image/2f439e2733a1be919230681e61a4d1eb.jpg","status":200}
+{"duration_ms":86,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/image/671175181de6978b3c22340905d390e8.jpg","status":200}
+{"authorName":"Regular User","deletedBy":3,"deletedByName":"Regular User","description":"Regular User deleted post \"homemade test\"","level":"info","message":"post_deleted","postId":4,"title":"homemade test"}
+{"duration_ms":17,"ip":"::1","level":"info","message":"http_request","method":"DELETE","path":"/4","status":204}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":200}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/logout","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":7,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/logout","status":500}
+{"description":"Admin User logged in","email":"admin@example.com","level":"info","message":"login_success","name":"Admin User","userId":1}
+{"duration_ms":258,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/login","status":200}
+{"duration_ms":0,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":200}
+{"duration_ms":13,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/users","status":304}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/users","status":304}
+{"duration_ms":7,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":200}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"authorName":"Regular User","deletedBy":1,"deletedByName":"Admin User","description":"Admin User deleted post \"wdawd\" (by Regular User)","level":"info","message":"post_deleted","postId":5,"title":"wdawd"}
+{"duration_ms":9,"ip":"::1","level":"info","message":"http_request","method":"DELETE","path":"/5","status":204}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":200}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":6,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/heartbeat","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/heartbeat","status":500}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/heartbeat","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/heartbeat","status":500}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/heartbeat","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":7,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/heartbeat","status":500}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/heartbeat","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/heartbeat","status":500}
+{"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-04T12:05:08.355Z"}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":304}
+{"action":"login","email":"user@example.com","level":"info","message":"otp_generated","userId":3}
+{"duration_ms":258,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/login","status":200}
+{"email":"user@example.com","level":"info","message":"otp_resent","userId":3}
+{"duration_ms":6,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/resend-otp","status":200}
+{"description":"Regular User verified OTP and logged in","email":"user@example.com","level":"info","message":"otp_verified","name":"Regular User","userId":3}
+{"duration_ms":6,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/verify-otp","status":200}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":200}
+{"duration_ms":6,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":200}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":6,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":200}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"authorId":3,"authorName":"Regular User","description":"Regular User created post \"test\" (pending approval)","hasImage":true,"level":"info","message":"post_created","postId":6,"status":"pending","title":"test"}
+{"duration_ms":43,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/","status":201}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":200}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/logout","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":7,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/logout","status":500}
+{"description":"Admin User logged in","email":"admin@example.com","level":"info","message":"login_success","name":"Admin User","userId":1}
+{"duration_ms":266,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/login","status":200}
+{"duration_ms":0,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":200}
+{"duration_ms":8,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":200}
+{"duration_ms":8,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":6,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":200}
+{"duration_ms":29,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/image/e47ee4ab85ad6adbd2b565da603dd4cf.jpg","status":200}
+{"approvedBy":1,"approvedByName":"Admin User","description":"Admin User approved post \"test\" by Regular User","level":"info","message":"post_approved","postAuthor":"Regular User","postId":6,"postTitle":"test"}
+{"duration_ms":8,"ip":"::1","level":"info","message":"http_request","method":"PUT","path":"/6/approve","status":200}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":200}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":200}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"authorName":"Regular User","deletedBy":1,"deletedByName":"Admin User","description":"Admin User deleted post \"test\" (by Regular User)","level":"info","message":"post_deleted","postId":6,"title":"test"}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"DELETE","path":"/6","status":204}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":200}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/users","status":200}
+{"action":"user_deleted","deletedBy":1,"deletedByName":"Admin User","deletedUserEmail":"test@chef.com","deletedUserId":4,"deletedUserName":"Chef test","description":"Admin \"Admin User\" deleted user \"Chef test\" (test@chef.com)","level":"info","message":"user_deleted"}
+{"duration_ms":8,"ip":"::1","level":"info","message":"http_request","method":"DELETE","path":"/users/4","status":200}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/users","status":200}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/users","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/users","status":304}
+{"duration_ms":11,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":200}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":200}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/heartbeat","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/heartbeat","status":500}
+{"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T09:18:40.422Z"}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":200}
+{"description":"Admin User logged in","email":"admin@example.com","level":"info","message":"login_success","name":"Admin User","userId":1}
+{"duration_ms":247,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/login","status":200}
+{"duration_ms":0,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":200}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":17,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/heartbeat","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":9,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/heartbeat","status":500}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/heartbeat","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":8,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/heartbeat","status":500}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/heartbeat","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/heartbeat","status":500}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/logout","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/logout","status":500}
+{"email":"hadirhimi9@gmail.com","level":"warn","message":"login_failed","reason":"user_not_found"}
+{"duration_ms":17,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/login","status":401}
+{"action":"register","email":"hadirhimi9@gmail.com","level":"info","message":"otp_generated","userId":5}
+{"duration_ms":262,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/register","status":201}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/register","status":409}
+{"description":"Admin User logged in","email":"admin@example.com","level":"info","message":"login_success","name":"Admin User","userId":1}
+{"duration_ms":249,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/login","status":200}
+{"duration_ms":0,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/users","status":200}
+{"action":"user_deleted","deletedBy":1,"deletedByName":"Admin User","deletedUserEmail":"hadirhimi9@gmail.com","deletedUserId":5,"deletedUserName":"ahdahdwd","description":"Admin \"Admin User\" deleted user \"ahdahdwd\" (hadirhimi9@gmail.com)","level":"info","message":"user_deleted"}
+{"duration_ms":7,"ip":"::1","level":"info","message":"http_request","method":"DELETE","path":"/users/5","status":200}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/users","status":200}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/heartbeat","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":10,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/heartbeat","status":500}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/heartbeat","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":10,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/heartbeat","status":500}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/logout","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":8,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/logout","status":500}
+{"description":"Admin User logged in","email":"admin@example.com","level":"info","message":"login_success","name":"Admin User","userId":1}
+{"duration_ms":254,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/login","status":200}
+{"duration_ms":0,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":304}
+{"duration_ms":9,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":7,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":10,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":15,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":7,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":8,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":8,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":7,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":6,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/heartbeat","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/heartbeat","status":500}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/heartbeat","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/heartbeat","status":500}
+{"duration_ms":9,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":304}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":13,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/heartbeat","status":200}
+{"duration_ms":10,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/heartbeat","status":200}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/heartbeat","status":200}
+{"description":"Admin User logged out","level":"info","message":"logout","userId":1,"userName":"Admin User"}
+{"duration_ms":17,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/logout","status":204}
+{"description":"Admin User logged in","email":"admin@example.com","level":"info","message":"login_success","name":"Admin User","userId":1}
+{"duration_ms":259,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/login","status":200}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":304}
+{"duration_ms":8,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/users","status":304}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":6,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":7,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":8,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/heartbeat","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":9,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/heartbeat","status":500}
+{"duration_ms":8,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":11,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":9,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":9,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":8,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":7,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/users","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/users","status":304}
+{"duration_ms":7,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/heartbeat","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/heartbeat","status":500}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/users","status":304}
+{"duration_ms":6,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":9,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/heartbeat","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/heartbeat","status":500}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":8,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":6,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/users","status":304}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/logs","status":200}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/logout","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":10,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/logout","status":500}
+{"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T11:10:27.366Z"}
+{"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T11:10:31.807Z"}
+{"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T11:11:21.185Z"}

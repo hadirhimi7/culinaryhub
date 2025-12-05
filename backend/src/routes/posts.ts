@@ -32,11 +32,17 @@ const upload = multer({
   storage,
   limits: { fileSize: 15 * 1024 * 1024 }, // 15MB limit
   fileFilter: (_req, file, cb) => {
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    const allowedTypes = [
+      'image/jpeg',
+      'image/png',
+      'image/gif',
+      'image/webp',
+      'application/pdf',
+    ];
     if (allowedTypes.includes(file.mimetype)) {
       cb(null, true);
     } else {
-      cb(new Error('Only image files are allowed'));
+      cb(new Error('Only image and PDF files are allowed'));
     }
   },
 });
@@ -81,16 +87,20 @@ interface PostRow {
 }
 
 /**
- * Serve post images - MUST be before parameterized routes
+ * Serve post images/PDFs - MUST be before parameterized routes
  */
 router.get('/image/:filename', (req, res) => {
   const filename = req.params.filename.replace(/[^a-zA-Z0-9._-]/g, '');
   const filePath = path.join(uploadDir, filename);
   
   if (fs.existsSync(filePath)) {
+    // Set content type for PDFs
+    if (filename.toLowerCase().endsWith('.pdf')) {
+      res.setHeader('Content-Type', 'application/pdf');
+    }
     res.sendFile(filePath);
   } else {
-    res.status(404).json({ error: 'Image not found' });
+    res.status(404).json({ error: 'File not found' });
   }
 });
 

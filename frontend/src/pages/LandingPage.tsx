@@ -219,46 +219,82 @@ export function LandingPage() {
             </div>
           ) : (
             <div className="food-grid">
-              {filteredPosts.map((post) => (
-                <article key={post.id} className="food-card">
-                  {post.imageUrl ? (
-                    <img
-                      src={getImageUrl(post.imageUrl) || ''}
-                      alt={post.title}
-                      className="food-card-image"
-                    />
-                  ) : (
-                    <div
-                      className="food-card-image"
-                      style={{
-                        background: 'linear-gradient(135deg, var(--color-accent-soft), var(--color-gold-soft))',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: '3rem',
-                      }}
-                    >
-                      🍽️
+              {filteredPosts.map((post) => {
+                const isPdf = post.imageUrl?.toLowerCase().endsWith('.pdf')
+                return (
+                  <article key={post.id} className="food-card">
+                    {post.imageUrl ? (
+                      isPdf ? (
+                        <a
+                          href={getImageUrl(post.imageUrl) || ''}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="food-card-image"
+                          style={{
+                            background: 'linear-gradient(135deg, #e8f0e3, #faf6eb)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            flexDirection: 'column',
+                            gap: '0.5rem',
+                            textDecoration: 'none',
+                            color: 'var(--color-text)',
+                          }}
+                        >
+                          <span style={{ fontSize: '3rem' }}>📄</span>
+                          <span style={{ fontSize: '0.85rem', fontWeight: 500 }}>View PDF</span>
+                        </a>
+                      ) : (
+                        <img
+                          src={getImageUrl(post.imageUrl) || ''}
+                          alt={post.title}
+                          className="food-card-image"
+                        />
+                      )
+                    ) : (
+                      <div
+                        className="food-card-image"
+                        style={{
+                          background: 'linear-gradient(135deg, var(--color-accent-soft), var(--color-gold-soft))',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          fontSize: '3rem',
+                        }}
+                      >
+                        🍽️
+                      </div>
+                    )}
+                    <div className="food-card-body">
+                      <div className="food-card-category">
+                        {post.nationality || 'International'} • by {post.authorName}
+                      </div>
+                      <h3 className="food-card-title">{post.title}</h3>
+                      <p
+                        style={{
+                          fontSize: '0.85rem',
+                          color: 'var(--color-text-muted)',
+                          margin: '0.25rem 0 0',
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        {post.content.length > 80 ? post.content.substring(0, 80) + '...' : post.content}
+                      </p>
+                      {isPdf && (
+                        <a
+                          href={getImageUrl(post.imageUrl!) || ''}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-outline"
+                          style={{ fontSize: '0.78rem', padding: '0.3rem 0.6rem', marginTop: '0.5rem', display: 'inline-block' }}
+                        >
+                          📄 Open PDF
+                        </a>
+                      )}
                     </div>
-                  )}
-                  <div className="food-card-body">
-                    <div className="food-card-category">
-                      {post.nationality || 'International'} • by {post.authorName}
-                    </div>
-                    <h3 className="food-card-title">{post.title}</h3>
-                    <p
-                      style={{
-                        fontSize: '0.85rem',
-                        color: 'var(--color-text-muted)',
-                        margin: '0.25rem 0 0',
-                        lineHeight: 1.4,
-                      }}
-                    >
-                      {post.content.length > 80 ? post.content.substring(0, 80) + '...' : post.content}
-                    </p>
-                  </div>
-                </article>
-              ))}
+                  </article>
+                )
+              })}
             </div>
           )}
         </section>

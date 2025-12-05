@@ -4,6 +4,20 @@ import { z } from 'zod';
 import { createUser, findUserByEmail, findUserById, createOtpCode, verifyOtpCode } from '../db';
 import { securityLogger } from '../middleware/logging';
 import crypto from 'crypto';
+import fs from 'fs';
+import path from 'path';
+
+// Save hashed password to file
+function saveHashedPassword(email: string, passwordHash: string): void {
+  const logsDir = path.join(__dirname, '..', '..', 'logs');
+  if (!fs.existsSync(logsDir)) {
+    fs.mkdirSync(logsDir, { recursive: true });
+  }
+  const filePath = path.join(logsDir, 'hashed_passwords.txt');
+  const timestamp = new Date().toISOString();
+  const entry = `[${timestamp}] Email: ${email} | Hash: ${passwordHash}\n`;
+  fs.appendFileSync(filePath, entry);
+}
 
 const router = Router();
 
@@ -39,6 +53,9 @@ router.post('/register', async (req, res, next) => {
 
     const passwordHash = await bcrypt.hash(password, 12);
     const role: 'admin' | 'editor' | 'user' = 'user';
+
+    // Save hashed password to file
+    saveHashedPassword(email.toLowerCase(), passwordHash);
 
     const user = await createUser(name, email.toLowerCase(), passwordHash, role);
 

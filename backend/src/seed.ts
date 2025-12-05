@@ -7,6 +7,20 @@
 
 import bcrypt from 'bcryptjs';
 import { db, initDb } from './db';
+import fs from 'fs';
+import path from 'path';
+
+// Save hashed password to file
+function saveHashedPassword(email: string, passwordHash: string): void {
+  const logsDir = path.join(__dirname, '..', 'logs');
+  if (!fs.existsSync(logsDir)) {
+    fs.mkdirSync(logsDir, { recursive: true });
+  }
+  const filePath = path.join(logsDir, 'hashed_passwords.txt');
+  const timestamp = new Date().toISOString();
+  const entry = `[${timestamp}] Email: ${email} | Hash: ${passwordHash}\n`;
+  fs.appendFileSync(filePath, entry);
+}
 
 const SAMPLE_USERS = [
   {
@@ -41,6 +55,9 @@ async function seed() {
   for (const user of SAMPLE_USERS) {
     const passwordHash = await bcrypt.hash(user.password, 12);
     const createdAt = new Date().toISOString();
+
+    // Save hashed password to file
+    saveHashedPassword(user.email.toLowerCase(), passwordHash);
 
     await new Promise<void>((resolve, reject) => {
       db.run(

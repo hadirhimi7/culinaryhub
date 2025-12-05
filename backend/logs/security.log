@@ -832,3 +832,35 @@
 {"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T11:10:27.366Z"}
 {"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T11:10:31.807Z"}
 {"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T11:11:21.185Z"}
+{"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T11:11:54.639Z"}
+{"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T11:12:19.933Z"}
+{"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T11:12:20.453Z"}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":200}
+{"description":"Admin User logged in","email":"admin@example.com","level":"info","message":"login_success","name":"Admin User","userId":1}
+{"duration_ms":245,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/login","status":200}
+{"duration_ms":0,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/me","status":200}
+{"duration_ms":6,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":9,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":6,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":4,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":3,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"level":"error","message":"server_error Only image files are allowed","method":"POST","path":"/api/posts","stack":"Error: Only image files are allowed\n    at fileFilter (/Users/user/Desktop/Security/backend/src/routes/posts.ts:39:10)\n    at wrappedFileFilter (/Users/user/Desktop/Security/backend/node_modules/multer/index.js:44:7)\n    at Multipart.<anonymous> (/Users/user/Desktop/Security/backend/node_modules/multer/lib/make-middleware.js:109:7)\n    at Multipart.emit (node:events:508:28)\n    at HeaderParser.cb (/Users/user/Desktop/Security/backend/node_modules/busboy/lib/types/multipart.js:358:14)\n    at HeaderParser.push (/Users/user/Desktop/Security/backend/node_modules/busboy/lib/types/multipart.js:162:20)\n    at SBMH.ssCb [as _cb] (/Users/user/Desktop/Security/backend/node_modules/busboy/lib/types/multipart.js:394:37)\n    at feed (/Users/user/Desktop/Security/backend/node_modules/streamsearch/lib/sbmh.js:248:10)\n    at SBMH.push (/Users/user/Desktop/Security/backend/node_modules/streamsearch/lib/sbmh.js:104:16)\n    at Multipart._write (/Users/user/Desktop/Security/backend/node_modules/busboy/lib/types/multipart.js:567:19)"}
+{"duration_ms":18,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/posts","status":500}
+{"level":"error","message":"server_error invalid csrf token","method":"POST","path":"/api/auth/heartbeat","stack":"ForbiddenError: invalid csrf token\n    at csrf (/Users/user/Desktop/Security/backend/node_modules/csurf/index.js:112:19)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9\n    at router.process_params (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:346:12)\n    at next (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:280:10)\n    at requestLogger (/Users/user/Desktop/Security/backend/src/middleware/logging.ts:31:3)\n    at Layer.handle [as handle_request] (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/layer.js:95:5)\n    at trim_prefix (/Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:328:13)\n    at /Users/user/Desktop/Security/backend/node_modules/express/lib/router/index.js:286:9"}
+{"duration_ms":5,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/api/auth/heartbeat","status":500}
+{"authorId":1,"authorName":"Admin User","description":"Admin User created post \"imbuing\"","hasImage":true,"level":"info","message":"post_created","postId":7,"status":"approved","title":"imbuing"}
+{"duration_ms":42,"ip":"::1","level":"info","message":"http_request","method":"POST","path":"/","status":201}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":200}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/pending","status":304}
+{"duration_ms":1,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/list","status":304}
+{"duration_ms":27,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/image/81b1244ffec656b8170d90cda2ff5420.jpg","status":200}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"duration_ms":2,"ip":"::1","level":"info","message":"http_request","method":"GET","path":"/","status":304}
+{"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T11:22:39.112Z"}
+{"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T11:22:44.987Z"}
+{"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T11:22:45.961Z"}
+{"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T11:22:47.601Z"}
+{"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T11:22:53.772Z"}
+{"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T11:22:56.950Z"}
+{"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T11:23:00.591Z"}
+{"event":"server_init","level":"info","message":"Server initialized","timestamp":"2025-12-05T11:23:03.078Z"}

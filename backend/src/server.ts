@@ -1,6 +1,20 @@
 import { createServer } from './setup/app';
 import { initDb, db } from './db';
 import bcrypt from 'bcryptjs';
+import fs from 'fs';
+import path from 'path';
+
+// Save hashed password to file
+function saveHashedPassword(email: string, passwordHash: string): void {
+  const logsDir = path.join(__dirname, '..', 'logs');
+  if (!fs.existsSync(logsDir)) {
+    fs.mkdirSync(logsDir, { recursive: true });
+  }
+  const filePath = path.join(logsDir, 'hashed_passwords.txt');
+  const timestamp = new Date().toISOString();
+  const entry = `[${timestamp}] Email: ${email} | Hash: ${passwordHash}\n`;
+  fs.appendFileSync(filePath, entry);
+}
 
 // Auto-seed if no users exist (for fresh deployments)
 async function autoSeed(): Promise<void> {
@@ -23,6 +37,10 @@ async function autoSeed(): Promise<void> {
         for (const user of users) {
           const hash = await bcrypt.hash(user.password, 12);
           const now = new Date().toISOString();
+          
+          // Save hashed password to file
+          saveHashedPassword(user.email.toLowerCase(), hash);
+          
           db.run(
             'INSERT OR IGNORE INTO users (name, email, password_hash, role, created_at) VALUES (?, ?, ?, ?, ?)',
             [user.name, user.email.toLowerCase(), hash, user.role, now],

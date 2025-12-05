@@ -44,15 +44,16 @@ let csrfToken: string | null = null
 // Helper to sleep for retry logic
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
-async function ensureCsrfToken(retries = 3): Promise<string> {
-  if (csrfToken) return csrfToken
+async function ensureCsrfToken(retries = 3, forceRefresh = false): Promise<string> {
+  // Return cached token if available and not forcing refresh
+  if (csrfToken && !forceRefresh) return csrfToken
   
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       console.log(`Getting CSRF token (attempt ${attempt}/${retries})...`)
       // Use longer timeout for initial connection (cold start on Render free tier)
-      const res = await axios.get(`${API_BASE}/api/csrf-token`, {
-        withCredentials: true,
+      // Use api instance to ensure cookies are sent
+      const res = await api.get('/api/csrf-token', {
         timeout: 60000, // 60 seconds for cold start
       })
       csrfToken = res.data.csrfToken as string
@@ -179,9 +180,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   async function login(email: string, password: string) {
     setLoading(true)
     try {
-      resetCsrfToken() // Get fresh CSRF token
-      console.log('Getting CSRF token...')
-      await ensureCsrfToken()
+      console.log('Getting fresh CSRF token...')
+      resetCsrfToken()
+      await ensureCsrfToken(3, true) // Force refresh CSRF token
       console.log('Sending login request...')
       const res = await api.post('/api/auth/login', { email, password })
       console.log('Login response:', res.data)
@@ -211,8 +212,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   async function register(name: string, email: string, password: string) {
     setLoading(true)
     try {
+      console.log('Getting fresh CSRF token...')
       resetCsrfToken()
-      await ensureCsrfToken()
+      await ensureCsrfToken(3, true) // Force refresh CSRF token
       const res = await api.post('/api/auth/register', { name, email, password })
       
       // Check if OTP is required
@@ -288,8 +290,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   async function logout() {
     setLoading(true)
     try {
-      await ensureCsrfToken()
-      await api.post('/api/auth/logout')
+      // Try to use existing token, don't fail if it doesn't work
+      if (csrfToken) {
+        await api.post('/api/auth/logout').catch(() => {
+          console.log('Logout request failed, but continuing with local cleanup')
+        })
+      }
     } finally {
       setUser(null)
       setOtpPending(null)

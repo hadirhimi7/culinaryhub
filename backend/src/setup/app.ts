@@ -33,9 +33,23 @@ export function createServer() {
 
   const frontendOrigin = process.env.FRONTEND_URL || 'http://localhost:5173';
   console.log('CORS origin:', frontendOrigin);
+  
+  // Allow multiple localhost ports in development
+  const allowedOrigins = process.env.NODE_ENV === 'production' 
+    ? [frontendOrigin]
+    : [frontendOrigin, 'http://localhost:5174', 'http://localhost:5175', 'http://localhost:3000'];
+  
   app.use(
     cors({
-      origin: frontendOrigin,
+      origin: (origin, callback) => {
+        // Allow requests with no origin (like mobile apps or curl)
+        if (!origin || allowedOrigins.includes(origin)) {
+          callback(null, true);
+        } else {
+          console.log('Blocked by CORS:', origin);
+          callback(new Error('Not allowed by CORS'));
+        }
+      },
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
       allowedHeaders: ['Content-Type', 'X-CSRF-Token', 'Authorization'],
